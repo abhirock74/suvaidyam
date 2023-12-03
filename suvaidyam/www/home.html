@@ -1,0 +1,77 @@
+<!-- your_app_name/your_app_name/www/your_page.html -->
+
+{% extends "templates/web.html" %}
+{% block content %}
+<div>
+    {% set documents = frappe.get_all('Home Carousel', fields=['image' , 'image_label','image_description']) %}
+    <!-- Your dynamic content goes here -->
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          {% for index, doc in enumerate(documents) %}
+            <li data-target="#carouselExampleIndicators" data-slide-to="{{ index }}" {% if index == 0 %}class="active"{% endif %}></li>
+          {% endfor %}
+        </ol>
+        
+        <div class="carousel-inner">
+          {% for index, doc in enumerate(documents) %}
+            <div class="carousel-item {% if index == 0 %}active{% endif %}">
+              <img class="d-block w-100" src="{{ doc.image }}" alt="{{ doc.image }}">
+            </div>
+          {% endfor %}
+        </div>
+        
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+    </div>
+    <!-- dihdihkdhddhb -->
+    <div class="pl-6 text-center md-text-left">
+      <p class="text-bgblue pt-7 font-playfire h1 text-2xl">
+        SUVAIDYAM
+      </p>
+      <p class="text-sm md-text-xl text-bgblue md-mt-0">
+        EMPOWERING RURAL INDIA THROUGH TECH
+      </p>
+    </div>
+    
+    
+</div>
+<!-- second parts -->
+<div class="container-md d-md-flex gap-md-10 gap-lg-24 pb-4 pt-10 px-6 md:pb-16 md:px-5">
+  <div class="w-md-50 w-100 d-md-flex justify-content-md-end px-4">
+    <div class="w-lg-365">
+      <div class="d-md-flex items-center gap-5">
+        <div><p class="border-t border-danger w-20 d-none d-md-block" data-aos="fade-right"></p></div>
+        <div><p class="font-thin text-xs text-16px tracking-widest pl-6">Bridging the technology gap</p></div>
+      </div>
+      <div class="pt-6 font-playfire text-27px lg-text-35px md-text-3xl w-100 text-bgblue">
+        <p style="font-family:playfire; font-size: 27px;" class="h2 px-6">
+          Every individual deserves to reach their full potential, and we want to make sure that happens
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="w-md-50 d-flex">
+    <div style="font-family:Palanquin,sans-serif" class="w-lg-410 md-text-17.5px text-20px font-serif text-black tracking-wide">
+      <p>
+        Indian villages have the potential to serve as centers of advanced technology and innovation. Our primary objective is to empower rural India by revolutionizing the way we teach and upskill its youth.
+      </p>
+      <p class="pt-6">
+        We are working towards removing the barriers that keep rural India out of the tech ecosystem. We want its youth to be able to dream big and chase opportunities in tech.
+      </p>
+      <p class="pt-6">
+        Our goal, therefore, is to provide easy access to technical infrastructure, education, and opportunities to rural India and empower individuals, families, and, in turn, rural communities to thrive and grow.
+      </p>
+      <p class="underline text-xs text-17px mt-2 tracking-widest"><a href="#">MORE ABOUT US</a></p>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}
